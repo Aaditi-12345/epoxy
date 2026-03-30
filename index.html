@@ -1,43 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecoshield Epoxy Service | Gold Coast</title>
+    <title>Ecoshield Premium Epoxy | Gold Coast's Premier Flooring Specialists</title>
+    <meta name="description" content="Premium polyaspartic epoxy flooring solutions on the Gold Coast. 10+ years experience, 15-year warranty, Australian owned.">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Fontsource Inter -->
+    <!-- Google Fonts - Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
                         brand: {
-                            blue: '#0056b3',
-                            dark: '#0f172a',
-                            accent: '#f59e0b',
-                            light: '#f8fafc'
+                            navy: '#0a1628',
+                            blue: '#1e3a8a',
+                            steel: '#475569',
+                            gold: '#d4af37',
+                            goldLight: '#f4d06f',
+                            charcoal: '#1a1a1a',
+                            silver: '#e8e8e8',
+                            white: '#ffffff'
                         }
                     },
                     animation: {
-                        'flash': 'flash 1s infinite',
-                        'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slow': 'bounce 2s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'shine': 'shine 2s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
-                        flash: {
-                            '0%, 100%': { opacity: '1', backgroundColor: '#ef4444' },
-                            '50%': { opacity: '0.8', backgroundColor: '#b91c1c' },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        shine: {
+                            '0%': { backgroundPosition: '-200% center' },
+                            '100%': { backgroundPosition: '200% center' },
                         }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                     }
                 }
             }
@@ -45,24 +58,40 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
+        
         .hero-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)), url('https://image.qwenlm.ai/public_source/0a442ecd-f910-4dc8-97dd-75947f3a8b93/193cbf16e-1ad8-4f7d-be4a-765a6a40002f.png');
+            background-image: linear-gradient(135deg, rgba(10, 22, 40, 0.95) 0%, rgba(30, 58, 138, 0.85) 100%), url('https://image.qwenlm.ai/public_source/0a442ecd-f910-4dc8-97dd-75947f3a8b93/193cbf16e-1ad8-4f7d-be4a-765a6a40002f.png');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
         }
+        
         .accordion-content {
-            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
             max-height: 0;
             overflow: hidden;
         }
+        
         .accordion-content.active {
             max-height: 500px;
         }
+        
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
+        
+        /* Premium Card Hover Effects */
+        .premium-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
         /* Floating Call Button */
         .floating-call-btn {
             position: fixed;
@@ -71,303 +100,639 @@
             z-index: 1000;
             animation: pulse-slow 2s infinite;
         }
+        
         .floating-call-btn:hover {
             transform: scale(1.1);
         }
+        
         .call-tooltip {
             position: absolute;
             bottom: 80px;
             right: 0;
             background: white;
-            padding: 12px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             white-space: nowrap;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            border-left: 4px solid #d4af37;
         }
+        
         .floating-call-btn:hover .call-tooltip {
             opacity: 1;
             visibility: visible;
             bottom: 90px;
         }
+        
         /* Map Container */
         .map-container {
             position: relative;
             overflow: hidden;
             border-radius: 1rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
+        
         .map-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(180deg, transparent 60%, rgba(15,23,42,0.8) 100%);
+            background: linear-gradient(180deg, transparent 60%, rgba(10,22,40,0.9) 100%);
             pointer-events: none;
+        }
+        
+        /* Premium Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #d4af37 0%, #f4d06f 50%, #d4af37 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+        
+        /* Section Dividers */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #f4d06f);
+            margin: 0 auto;
+        }
+        
+        /* Image Zoom Effect */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        
+        .img-zoom-container img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .img-zoom-container:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Stats Counter Animation */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* Before/After Comparison Slider */
+        .comparison-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        
+        .comparison-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .comparison-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
 </head>
 <body class="font-sans text-slate-800 antialiased bg-slate-50">
 
-    <!-- Flashing Banner -->
-    <div class="bg-red-600 text-white text-center py-2 font-bold uppercase tracking-wider animate-flash cursor-pointer" onclick="document.getElementById('enquiry').scrollIntoView()">
-        <i class="fas fa-tag mr-2"></i> Flash Sale: $75 OFF Any Service - Limited Time Only! <i class="fas fa-arrow-right ml-2"></i>
-    </div>
-
-    <!-- Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <i class="fas fa-shield-alt text-brand-blue text-3xl"></i>
-                <div>
-                    <h1 class="text-xl font-bold text-brand-dark leading-none">ECOSHIELD</h1>
-                    <span class="text-xs text-slate-500 font-semibold tracking-widest">EPOXY SERVICE</span>
+    <!-- Premium Top Bar -->
+    <div class="bg-brand-navy text-white py-2 text-sm">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-2">
+                    <i class="fas fa-phone-alt text-brand-gold"></i>
+                    <a href="tel:0416013145" class="hover:text-brand-gold transition">0416 013 145</a>
+                </span>
+                <span class="hidden md:flex items-center gap-2">
+                    <i class="fas fa-phone-alt text-brand-gold"></i>
+                    <a href="tel:0452664120" class="hover:text-brand-gold transition">0452 664 120</a>
+                </span>
+                <span class="hidden lg:flex items-center gap-2">
+                    <i class="fas fa-clock text-brand-gold"></i>
+                    Mon-Sat: 7AM - 6PM
+                </span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="hidden md:inline text-brand-gold font-semibold">
+                    <i class="fas fa-star mr-1"></i> 5-Star Rated on Google
+                </span>
+                <div class="flex gap-3">
+                    <a href="#" class="hover:text-brand-gold transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-brand-gold transition"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            
-            <nav class="hidden md:flex gap-6 font-medium text-sm text-slate-600">
-                <a href="#about" class="hover:text-brand-blue transition">About Us</a>
-                <a href="#services" class="hover:text-brand-blue transition">Services</a>
-                <a href="#gallery" class="hover:text-brand-blue transition">Gallery</a>
-                <a href="#prices" class="hover:text-brand-blue transition">Prices</a>
-                <a href="#service-area" class="hover:text-brand-blue transition">Service Area</a>
-                <a href="#reviews" class="hover:text-brand-blue transition">Reviews</a>
-                <a href="#faq" class="hover:text-brand-blue transition">FAQ</a>
-            </nav>
-
-            <a href="#enquiry" class="hidden md:inline-block bg-brand-blue text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition shadow-lg transform hover:-translate-y-0.5">
-                Get Free Quote
-            </a>
-
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-slate-700 text-2xl" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
+    </div>
+
+    <!-- Premium Navigation -->
+    <header class="bg-white/98 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-slate-100">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Premium Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="relative">
+                        <div class="w-14 h-14 bg-gradient-to-br from-brand-blue to-brand-navy rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-brand-blue/30 transition-all duration-300">
+                            <i class="fas fa-shield-alt text-brand-gold text-2xl"></i>
+                        </div>
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-brand-gold rounded-full animate-pulse"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-brand-navy leading-none tracking-tight">ECOSHIELD</h1>
+                        <span class="text-xs text-brand-steel font-medium tracking-widest uppercase">Premium Epoxy Solutions</span>
+                    </div>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
+                    <a href="#about" class="hover:text-brand-blue transition relative group">
+                        About
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#services" class="hover:text-brand-blue transition relative group">
+                        Services
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#gallery" class="hover:text-brand-blue transition relative group">
+                        Gallery
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#process" class="hover:text-brand-blue transition relative group">
+                        Process
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#prices" class="hover:text-brand-blue transition relative group">
+                        Pricing
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#reviews" class="hover:text-brand-blue transition relative group">
+                        Reviews
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-gold transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="bg-gradient-to-r from-brand-blue to-brand-navy text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-brand-blue/30 transition-all transform hover:-translate-y-0.5">
+                        Get Free Quote
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-slate-700 text-2xl" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 flex flex-col gap-4 shadow-lg">
-            <a href="#about" class="block text-slate-600 font-medium" onclick="toggleMenu()">About Us</a>
-            <a href="#services" class="block text-slate-600 font-medium" onclick="toggleMenu()">Services</a>
-            <a href="#gallery" class="block text-slate-600 font-medium" onclick="toggleMenu()">Gallery</a>
-            <a href="#prices" class="block text-slate-600 font-medium" onclick="toggleMenu()">Prices</a>
-            <a href="#service-area" class="block text-slate-600 font-medium" onclick="toggleMenu()">Service Area</a>
-            <a href="#reviews" class="block text-slate-600 font-medium" onclick="toggleMenu()">Reviews</a>
-            <a href="#faq" class="block text-slate-600 font-medium" onclick="toggleMenu()">FAQ</a>
-            <a href="#enquiry" class="block text-brand-blue font-bold" onclick="toggleMenu()">Get Free Quote</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 p-6 shadow-xl">
+            <div class="flex flex-col gap-4">
+                <a href="#about" class="text-slate-600 font-medium py-2 hover:text-brand-blue" onclick="toggleMenu()">About Us</a>
+                <a href="#services" class="text-slate-600 font-medium py-2 hover:text-brand-blue" onclick="toggleMenu()">Services</a>
+                <a href="#gallery" class="text-slate-600 font-medium py-2 hover:text-brand-blue" onclick="toggleMenu()">Gallery</a>
+                <a href="#process" class="text-slate-600 font-medium py-2 hover:text-brand-blue" onclick="toggleMenu()">Process</a>
+                <a href="#prices" class="text-slate-600 font-medium py-2 hover:text-brand-blue" onclick="toggleMenu()">Pricing</a>
+                <a href="#reviews" class="text-slate-600 font-medium py-2 hover:text-brand-blue" onclick="toggleMenu()">Reviews</a>
+                <a href="#contact" class="bg-brand-blue text-white text-center py-3 rounded-lg font-bold" onclick="toggleMenu()">Get Free Quote</a>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-bg h-[600px] flex items-center relative">
-        <div class="container mx-auto px-4 text-center md:text-left">
-            <div class="max-w-3xl">
-                <span class="inline-block bg-brand-accent text-white px-3 py-1 rounded text-sm font-bold mb-4">
-                    <i class="fas fa-check-circle mr-1"></i> Gold Coast's #1 Epoxy Specialists
-                </span>
-                <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-                    Transform Your Garage <br> <span class="text-blue-400">Into A Showroom</span>
+    <!-- Premium Hero Section -->
+    <section class="hero-bg min-h-[700px] flex items-center relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-blue/20 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl animate-float" style="animation-delay: 1s;"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-brand-gold text-sm font-semibold mb-6 border border-white/20">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    Gold Coast's #1 Premium Epoxy Specialists
+                </div>
+                
+                <h2 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+                    Transform Your Space Into A <span class="gradient-text">Masterpiece</span>
                 </h2>
-                <p class="text-lg text-slate-200 mb-8 max-w-xl">
-                    Premium polyaspartic flooring solutions. Australian owned, 10+ years experience, and trusted by hundreds of Gold Coast homeowners.
+                
+                <p class="text-xl text-slate-200 mb-10 max-w-2xl leading-relaxed">
+                    Premium polyaspartic flooring solutions engineered for durability and beauty. 
+                    Australian owned, 10+ years excellence, 15-year warranty on all installations.
                 </p>
-                <div class="flex flex-col md:flex-row gap-4">
-                    <a href="#enquiry" class="bg-brand-blue hover:bg-blue-700 text-white text-lg font-bold py-4 px-8 rounded shadow-lg transition text-center">
-                        Book Your Free Quote
+                
+                <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="#contact" class="bg-gradient-to-r from-brand-gold to-brand-goldLight text-brand-navy text-lg font-bold py-4 px-10 rounded-full shadow-2xl hover:shadow-brand-gold/50 transition-all transform hover:-translate-y-1 text-center">
+                        Book Your Free Consultation
                     </a>
-                    <a href="tel:0416013145" class="bg-white hover:bg-slate-100 text-brand-dark text-lg font-bold py-4 px-8 rounded shadow-lg transition text-center flex items-center justify-center gap-2">
-                        <i class="fas fa-phone-alt"></i> Call Now
+                    <a href="tel:0416013145" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white text-lg font-bold py-4 px-10 rounded-full border-2 border-white/30 transition-all text-center flex items-center justify-center gap-3">
+                        <i class="fas fa-phone-alt"></i> Call 0416 013 145
                     </a>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-wrap items-center gap-6 text-sm text-slate-300">
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <i class="fas fa-medal text-brand-gold"></i>
+                        <span>15-Year Warranty</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <i class="fas fa-certificate text-brand-gold"></i>
+                        <span>Fully Licensed & Insured</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <i class="fas fa-clock text-brand-gold"></i>
+                        <span>2-Day Completion</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Bar -->
-    <section class="bg-white py-8 border-b shadow-sm relative z-10 -mt-10 mx-4 md:mx-auto max-w-6xl rounded-lg">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
-            <div class="flex flex-col items-center">
-                <i class="fas fa-quote-left text-brand-blue text-2xl mb-2"></i>
-                <span class="font-bold text-slate-700">Free Quote</span>
+    <!-- Premium Features Bar -->
+    <section class="bg-white py-12 border-b border-slate-100 relative z-10 -mt-8 mx-4 md:mx-auto max-w-7xl rounded-2xl shadow-2xl">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+            <div class="group">
+                <div class="w-16 h-16 bg-gradient-to-br from-brand-blue/10 to-brand-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-file-invoice-dollar text-brand-blue text-2xl"></i>
+                </div>
+                <span class="font-semibold text-slate-700">Free Quote</span>
             </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-flask text-brand-blue text-2xl mb-2"></i>
-                <span class="font-bold text-slate-700">Polyaspartic</span>
+            <div class="group">
+                <div class="w-16 h-16 bg-gradient-to-br from-brand-blue/10 to-brand-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-flask text-brand-blue text-2xl"></i>
+                </div>
+                <span class="font-semibold text-slate-700">Polyaspartic</span>
             </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-calendar-check text-brand-blue text-2xl mb-2"></i>
-                <span class="font-bold text-slate-700">2 Days Finish</span>
+            <div class="group">
+                <div class="w-16 h-16 bg-gradient-to-br from-brand-blue/10 to-brand-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-calendar-check text-brand-blue text-2xl"></i>
+                </div>
+                <span class="font-semibold text-slate-700">2 Days Finish</span>
             </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-medal text-brand-blue text-2xl mb-2"></i>
-                <span class="font-bold text-slate-700">3 Years Warranty</span>
+            <div class="group">
+                <div class="w-16 h-16 bg-gradient-to-br from-brand-blue/10 to-brand-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-shield-alt text-brand-blue text-2xl"></i>
+                </div>
+                <span class="font-semibold text-slate-700">15-Year Warranty</span>
             </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-stopwatch text-brand-blue text-2xl mb-2"></i>
-                <span class="font-bold text-slate-700">Same Day Service</span>
+            <div class="group">
+                <div class="w-16 h-16 bg-gradient-to-br from-brand-blue/10 to-brand-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-bolt text-brand-blue text-2xl"></i>
+                </div>
+                <span class="font-semibold text-slate-700">2hr Response</span>
             </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-bolt text-brand-blue text-2xl mb-2"></i>
-                <span class="font-bold text-slate-700">2hr Response</span>
+            <div class="group">
+                <div class="w-16 h-16 bg-gradient-to-br from-brand-blue/10 to-brand-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-award text-brand-blue text-2xl"></i>
+                </div>
+                <span class="font-semibold text-slate-700">5-Star Rated</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-gradient-to-br from-slate-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-3 block">Why Choose Ecoshield</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">The Premium Difference</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-slate-600 text-lg">We don't just coat floors—we engineer lasting impressions with Australia's finest polyaspartic technology.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="premium-card bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-navy rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-gem text-brand-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy mb-3">Premium Materials</h3>
+                    <p class="text-slate-600">Only the highest-grade polyaspartic coatings sourced from leading manufacturers worldwide.</p>
+                </div>
+                
+                <div class="premium-card bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-navy rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-users-cog text-brand-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy mb-3">Expert Craftsmen</h3>
+                    <p class="text-slate-600">Our team averages 8+ years experience. Every installation is handled by certified professionals.</p>
+                </div>
+                
+                <div class="premium-card bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-navy rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-check text-brand-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy mb-3">15-Year Warranty</h3>
+                    <p class="text-slate-600">Industry-leading 15-year warranty coverage. We stand behind our work with confidence and integrity.</p>
+                </div>
+                
+                <div class="premium-card bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-navy rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-brand-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy mb-3">Rapid Completion</h3>
+                    <p class="text-slate-600">Most projects completed in 48 hours. Backed by our fast-cure polyaspartic technology.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Special Offer Section -->
-    <section class="py-16 bg-brand-light">
-        <div class="container mx-auto px-4">
-            <div class="bg-gradient-to-r from-blue-900 to-blue-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
-                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center text-white">
-                    <div class="inline-block bg-red-500 text-white px-3 py-1 rounded font-bold text-sm w-max mb-4 animate-pulse">
-                        SPECIAL OFFER
+    <section class="py-20 bg-brand-navy relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-brand-gold rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-blue rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="bg-gradient-to-br from-brand-blue to-brand-navy rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <div class="lg:w-3/5 p-10 lg:p-16 flex flex-col justify-center text-white">
+                    <div class="inline-block bg-brand-gold text-brand-navy px-4 py-2 rounded-full font-bold text-sm w-max mb-6 animate-pulse">
+                        <i class="fas fa-fire mr-2"></i> LIMITED TIME OFFER
                     </div>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4">Single Garage Flooring Package</h3>
-                    <p class="text-blue-100 text-lg mb-6">Complete transformation for your standard single garage.</p>
-                    <div class="text-5xl font-extrabold mb-2">$2,000 <span class="text-2xl font-normal text-blue-200">AUD</span></div>
-                    <ul class="space-y-3 mb-8 text-blue-100">
-                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i> Full Surface Preparation</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i> Premium Polyaspartic Coating</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i> <span class="font-bold text-white">FREE Water Proofing</span></li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i> <span class="font-bold text-white">FREE Insect Proofing</span></li>
+                    <h3 class="text-4xl lg:text-5xl font-serif font-bold mb-6">Single Garage Transformation Package</h3>
+                    <p class="text-blue-100 text-xl mb-8 leading-relaxed">Complete premium transformation for your standard single garage. Includes our signature polyaspartic system with decorative flakes.</p>
+                    <div class="flex items-end gap-4 mb-8">
+                        <div>
+                            <span class="text-6xl font-extrabold text-brand-gold">$2,000</span>
+                            <span class="text-xl text-blue-200 ml-2">AUD</span>
+                        </div>
+                        <span class="text-2xl text-blue-300 line-through mb-2">$2,800</span>
+                    </div>
+                    <ul class="space-y-4 mb-10 text-blue-100">
+                        <li class="flex items-center text-lg"><i class="fas fa-check-circle text-brand-gold mr-4 text-xl"></i> Complete Surface Preparation & Diamond Grinding</li>
+                        <li class="flex items-center text-lg"><i class="fas fa-check-circle text-brand-gold mr-4 text-xl"></i> Premium Polyaspartic Base Coat</li>
+                        <li class="flex items-center text-lg"><i class="fas fa-check-circle text-brand-gold mr-4 text-xl"></i> <span class="font-bold text-white">FREE Waterproofing Treatment</span></li>
+                        <li class="flex items-center text-lg"><i class="fas fa-check-circle text-brand-gold mr-4 text-xl"></i> <span class="font-bold text-white">FREE Insect Proofing</span></li>
+                        <li class="flex items-center text-lg"><i class="fas fa-check-circle text-brand-gold mr-4 text-xl"></i> Clear Polyaspartic Top Coat with UV Protection</li>
+                        <li class="flex items-center text-lg"><i class="fas fa-check-circle text-brand-gold mr-4 text-xl"></i> 15-Year Product Warranty</li>
                     </ul>
-                    <a href="#enquiry" class="bg-white text-blue-900 font-bold py-3 px-8 rounded hover:bg-blue-50 transition inline-block text-center">Claim This Offer</a>
+                    <a href="#contact" class="bg-brand-gold hover:bg-brand-goldLight text-brand-navy font-bold py-4 px-10 rounded-full transition-all inline-block text-center text-lg shadow-lg hover:shadow-brand-gold/50 transform hover:-translate-y-1">
+                        Claim This Offer Now
+                    </a>
+                    <p class="text-blue-200 text-sm mt-6"><i class="fas fa-info-circle mr-2"></i> Offer valid for standard concrete conditions. Expires 31st December 2026.</p>
                 </div>
-                <div class="md:w-1/2 bg-slate-200 min-h-[300px] md:min-h-auto relative">
-                     <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1b95ae65a-3fa0-41af-86da-7f4e0ab30bde.png" alt="Metallic Epoxy Finish" class="w-full h-full object-cover">
+                <div class="lg:w-2/5 relative min-h-[400px] lg:min-h-auto">
+                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1b95ae65a-3fa0-41af-86da-7f4e0ab30bde.png" alt="Premium Metallic Epoxy Finish" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 to-transparent lg:bg-gradient-to-l"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Us -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-                <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1cd02d499-b5a1-4251-9c42-451ee9517976.png" alt="Worker applying epoxy" class="rounded-lg shadow-xl w-full">
-            </div>
-            <div class="md:w-1/2">
-                <h4 class="text-brand-blue font-bold uppercase tracking-widest mb-2">About Ecoshield</h4>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Australian Owned & Operated</h2>
-                <p class="text-slate-600 mb-4 leading-relaxed">
-                    Based right here in the Gold Coast, Queensland, Ecoshield Epoxy Service has been the region's trusted flooring expert for over 10 years. We don't just paint floors; we engineer durable, beautiful surfaces that withstand the harsh Australian climate.
-                </p>
-                <p class="text-slate-600 mb-6 leading-relaxed">
-                    From Surfers Paradise to the Hinterland, our team delivers premium polyaspartic solutions that cure fast and last longer. We pride ourselves on our fast response times and meticulous attention to detail.
-                </p>
-                <div class="flex gap-4">
-                    <div class="text-center">
-                        <span class="block text-3xl font-bold text-brand-blue">10+</span>
-                        <span class="text-sm text-slate-500">Years Exp.</span>
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="absolute -top-6 -left-6 w-24 h-24 bg-brand-gold/20 rounded-full blur-xl"></div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-blue/20 rounded-full blur-xl"></div>
+                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1cd02d499-b5a1-4251-9c42-451ee9517976.png" alt="Professional epoxy application" class="rounded-2xl shadow-2xl w-full relative z-10">
+                    <div class="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl z-20">
+                        <div class="text-4xl font-bold text-brand-gold mb-1">10+</div>
+                        <div class="text-sm text-slate-600 font-medium">Years Excellence</div>
                     </div>
-                    <div class="w-px bg-slate-300 h-12"></div>
-                    <div class="text-center">
-                        <span class="block text-3xl font-bold text-brand-blue">500+</span>
-                        <span class="text-sm text-slate-500">Projects Done</span>
+                </div>
+                <div>
+                    <span class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-3 block">About Ecoshield</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">Australian Owned & Operated</h2>
+                    <div class="section-divider mb-8"></div>
+                    <p class="text-slate-600 mb-6 leading-relaxed text-lg">
+                        Based right here in the Gold Coast, Queensland, Ecoshield has been the region's trusted premium flooring specialist for over a decade. We don't just paint floors—we engineer durable, beautiful surfaces that withstand the harsh Australian climate while elevating your property's value.
+                    </p>
+                    <p class="text-slate-600 mb-8 leading-relaxed text-lg">
+                        From Surfers Paradise to the Hinterland, our certified team delivers premium polyaspartic solutions that cure faster and last longer than traditional epoxy. We pride ourselves on meticulous attention to detail, transparent pricing, and unmatched customer service.
+                    </p>
+                    <div class="grid grid-cols-3 gap-6 mb-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-brand-gold mb-1 stat-number">500+</div>
+                            <div class="text-sm text-slate-500 font-medium">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-brand-gold mb-1 stat-number">100%</div>
+                            <div class="text-sm text-slate-500 font-medium">Satisfaction Rate</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-brand-gold mb-1 stat-number">24hr</div>
+                            <div class="text-sm text-slate-500 font-medium">Quote Response</div>
+                        </div>
                     </div>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:gap-3 transition-all">
+                        Learn More About Us <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services -->
-    <section id="services" class="py-16 bg-slate-50">
+    <section id="services" class="py-20 bg-slate-50">
         <div class="container mx-auto px-4">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Services</h2>
-                <p class="text-slate-600">We provide comprehensive flooring solutions for residential and commercial properties.</p>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-3 block">Our Services</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">Premium Flooring Solutions</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-slate-600 text-lg">Comprehensive flooring solutions for residential and commercial properties across the Gold Coast.</p>
             </div>
+            
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition group">
-                    <div class="h-48 rounded-lg overflow-hidden mb-4">
-                        <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1b95ae65a-3fa0-41af-86da-7f4e0ab30bde.png" alt="Residential Garage Epoxy" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                <div class="premium-card bg-white rounded-2xl overflow-hidden shadow-lg group">
+                    <div class="h-64 img-zoom-container">
+                        <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1b95ae65a-3fa0-41af-86da-7f4e0ab30bde.png" alt="Residential Garage Epoxy" class="w-full h-full object-cover">
                     </div>
-                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-brand-blue text-2xl mb-4 group-hover:bg-brand-blue group-hover:text-white transition">
-                        <i class="fas fa-home"></i>
+                    <div class="p-8">
+                        <div class="w-14 h-14 bg-gradient-to-br from-brand-blue to-brand-navy rounded-xl flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy mb-4">Residential Garages</h3>
+                        <p class="text-slate-600 mb-6 leading-relaxed">Transform your dusty concrete into a pristine showroom floor. Resistant to oil, heat, chemicals, and heavy traffic.</p>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:gap-3 transition-all">
+                            Get Quote <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Residential Garages</h3>
-                    <p class="text-slate-600 mb-4">Turn your dusty concrete into a pristine showroom floor. Resistant to oil, heat, and chemicals.</p>
                 </div>
+                
                 <!-- Service 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition group">
-                    <div class="h-48 rounded-lg overflow-hidden mb-4">
-                        <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/15ef09442-4a6b-429f-bfc0-565f948a0dcc.png" alt="Commercial Warehouse Epoxy" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                <div class="premium-card bg-white rounded-2xl overflow-hidden shadow-lg group">
+                    <div class="h-64 img-zoom-container">
+                        <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/15ef09442-4a6b-429f-bfc0-565f948a0dcc.png" alt="Commercial Warehouse Epoxy" class="w-full h-full object-cover">
                     </div>
-                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-brand-blue text-2xl mb-4 group-hover:bg-brand-blue group-hover:text-white transition">
-                        <i class="fas fa-warehouse"></i>
+                    <div class="p-8">
+                        <div class="w-14 h-14 bg-gradient-to-br from-brand-blue to-brand-navy rounded-xl flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy mb-4">Commercial & Industrial</h3>
+                        <p class="text-slate-600 mb-6 leading-relaxed">Heavy-duty flooring for workshops, warehouses, and showrooms designed for extreme traffic and chemical exposure.</p>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:gap-3 transition-all">
+                            Get Quote <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Commercial & Industrial</h3>
-                    <p class="text-slate-600 mb-4">Heavy-duty flooring for workshops, warehouses, and showrooms designed for high traffic.</p>
                 </div>
+                
                 <!-- Service 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition group">
-                    <div class="h-48 rounded-lg overflow-hidden mb-4">
-                        <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/130a347a8-01b8-4bff-8b4b-27580359d808.png" alt="Driveway Epoxy Coating" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                <div class="premium-card bg-white rounded-2xl overflow-hidden shadow-lg group">
+                    <div class="h-64 img-zoom-container">
+                        <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/130a347a8-01b8-4bff-8b4b-27580359d808.png" alt="Driveway Epoxy Coating" class="w-full h-full object-cover">
                     </div>
-                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-brand-blue text-2xl mb-4 group-hover:bg-brand-blue group-hover:text-white transition">
-                        <i class="fas fa-road"></i>
+                    <div class="p-8">
+                        <div class="w-14 h-14 bg-gradient-to-br from-brand-blue to-brand-navy rounded-xl flex items-center justify-center text-brand-gold text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy mb-4">Driveways & Paths</h3>
+                        <p class="text-slate-600 mb-6 leading-relaxed">Enhance your curb appeal with decorative flake systems that are slip-resistant, durable, and UV stable.</p>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:gap-3 transition-all">
+                            Get Quote <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Driveways & Paths</h3>
-                    <p class="text-slate-600 mb-4">Enhance your curb appeal with decorative flake systems that are slip-resistant and durable.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery -->
-    <section id="gallery" class="py-16 bg-white">
+    <!-- Before/After Comparison Section -->
+    <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Recent Projects</h2>
-            <p class="text-center text-slate-600 mb-12">Browse through our portfolio of completed epoxy flooring installations</p>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-3 block">Transformations</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">See The Difference</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-slate-600 text-lg">Real projects, real transformations. Browse our portfolio of completed installations.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Before/After 1 - Garage -->
+                <div class="comparison-container shadow-2xl">
+                    <div class="relative">
+                        <img src="https://image.qwenlm.ai/public_source/0a442ecd-f910-4dc8-97dd-75947f3a8b93/1245a37ba-fc49-423f-84bb-bcffe1bef077.png" alt="Garage Before - Dull Concrete" class="comparison-image">
+                    </div>
+                    <div class="relative -mt-2">
+                        <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1b95ae65a-3fa0-41af-86da-7f4e0ab30bde.png" alt="Garage After - Premium Epoxy Finish" class="comparison-image">
+                    </div>
+                    <div class="comparison-badge">
+                        <i class="fas fa-arrow-down text-brand-gold"></i>
+                        <span>Garage Transformation</span>
+                    </div>
+                </div>
+                
+                <!-- Before/After 2 - Driveway -->
+                <div class="comparison-container shadow-2xl">
+                    <div class="relative">
+                        <img src="https://image.qwenlm.ai/public_source/0a442ecd-f910-4dc8-97dd-75947f3a8b93/147cd8e37-657f-49a7-a20a-f31eda3e32ca.png" alt="Driveway Before - Cracked Concrete" class="comparison-image">
+                    </div>
+                    <div class="relative -mt-2">
+                        <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/130a347a8-01b8-4bff-8b4b-27580359d808.png" alt="Driveway After - Decorative Flake Epoxy" class="comparison-image">
+                    </div>
+                    <div class="comparison-badge">
+                        <i class="fas fa-arrow-down text-brand-gold"></i>
+                        <span>Driveway Transformation</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#gallery" class="inline-flex items-center gap-2 bg-brand-navy text-white font-semibold py-4 px-8 rounded-full hover:bg-brand-blue transition-all">
+                    View Full Gallery <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-3 block">Our Portfolio</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">Recent Projects</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-slate-600 text-lg">Browse through our portfolio of premium epoxy flooring installations across the Gold Coast.</p>
+            </div>
+            
             <div class="gallery-grid">
-                <div class="h-72 rounded-lg overflow-hidden shadow-lg relative group">
-                    <img src="https://image.qwenlm.ai/public_source/0a442ecd-f910-4dc8-97dd-75947f3a8b93/193cbf16e-1ad8-4f7d-be4a-765a6a40002f.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-bold">Metallic Finish</span>
+                <div class="h-80 rounded-2xl overflow-hidden shadow-xl relative group premium-card">
+                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1cd02d499-b5a1-4251-9c42-451ee9517976.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-brand-gold font-semibold text-sm">Application Process</span>
+                            <h4 class="text-white font-bold text-xl">Professional Installation</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="h-72 rounded-lg overflow-hidden shadow-lg relative group">
-                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1b95ae65a-3fa0-41af-86da-7f4e0ab30bde.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-bold">Blue Swirl Metallic</span>
+                <div class="h-80 rounded-2xl overflow-hidden shadow-xl relative group premium-card">
+                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/130a347a8-01b8-4bff-8b4b-27580359d808.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-brand-gold font-semibold text-sm">Decorative Flake</span>
+                            <h4 class="text-white font-bold text-xl">Southport Driveway</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="h-72 rounded-lg overflow-hidden shadow-lg relative group">
-                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1cd02d499-b5a1-4251-9c42-451ee9517976.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-bold">Application Process</span>
+                <div class="h-80 rounded-2xl overflow-hidden shadow-xl relative group premium-card">
+                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1bd502160-dfc5-4b79-9356-033688913fd3.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-brand-gold font-semibold text-sm">Custom Design Pattern</span>
+                            <h4 class="text-white font-bold text-xl">Varsity Lakes Home</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="h-72 rounded-lg overflow-hidden shadow-lg relative group">
-                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/15ef09442-4a6b-429f-bfc0-565f948a0dcc.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-bold">Commercial Warehouse</span>
+                <div class="h-80 rounded-2xl overflow-hidden shadow-xl relative group premium-card">
+                    <img src="https://image.qwenlm.ai/public_source/0a442ecd-f910-4dc8-97dd-75947f3a8b93/1245a37ba-fc49-423f-84bb-bcffe1bef077.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-brand-gold font-semibold text-sm">Decorative Flake System</span>
+                            <h4 class="text-white font-bold text-xl">Mermaid Beach Garage</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="h-72 rounded-lg overflow-hidden shadow-lg relative group">
-                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/130a347a8-01b8-4bff-8b4b-27580359d808.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-bold">Driveway Transformation</span>
+                <div class="h-80 rounded-2xl overflow-hidden shadow-xl relative group premium-card">
+                    <img src="https://image.qwenlm.ai/public_source/0a442ecd-f910-4dc8-97dd-75947f3a8b93/147cd8e37-657f-49a7-a20a-f31eda3e32ca.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-brand-gold font-semibold text-sm">High-Gloss Finish</span>
+                            <h4 class="text-white font-bold text-xl">Broadbeach Showroom</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="h-72 rounded-lg overflow-hidden shadow-lg relative group">
-                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1a9a3c749-1ce7-48df-962f-27f791e787cb.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-bold">Metallic Pour</span>
+                <div class="h-80 rounded-2xl overflow-hidden shadow-xl relative group premium-card">
+                    <img src="https://image.qwenlm.ai/public_source/0a442ecd-f910-4dc8-97dd-75947f3a8b93/193cbf16e-1ad8-4f7d-be4a-765a6a40002f.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-brand-gold font-semibold text-sm">Metallic Epoxy</span>
+                            <h4 class="text-white font-bold text-xl">Palm Beach Residence</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="h-72 rounded-lg overflow-hidden shadow-lg relative group">
-                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1bd502160-dfc5-4b79-9356-033688913fd3.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-bold">Custom Design Pattern</span>
+                <div class="h-80 rounded-2xl overflow-hidden shadow-xl relative group premium-card">
+                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1b95ae65a-3fa0-41af-86da-7f4e0ab30bde.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-brand-gold font-semibold text-sm">Premium Garage Floor</span>
+                            <h4 class="text-white font-bold text-xl">Coolangatta Home</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="h-72 rounded-lg overflow-hidden shadow-lg relative group">
-                    <img src="https://image.qwenlm.ai/public_source/0a442ecd-f910-4dc8-97dd-75947f3a8b93/1245a37ba-fc49-423f-84bb-bcffe1bef077.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-bold">Decorative Flake</span>
+                <div class="h-80 rounded-2xl overflow-hidden shadow-xl relative group premium-card">
+                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/15ef09442-4a6b-429f-bfc0-565f948a0dcc.png" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-brand-gold font-semibold text-sm">Industrial Coating</span>
+                            <h4 class="text-white font-bold text-xl">Oxenford Facility</h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -375,40 +740,124 @@
     </section>
 
     <!-- Process Section -->
-    <section class="py-16 bg-brand-light">
+    <section id="process" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Our Installation Process</h2>
-            <p class="text-center text-slate-600 mb-12">Professional 3-step process for perfect results every time</p>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-3 block">Our Process</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">The Premium Standard</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-slate-600 text-lg">Professional 4-step process engineered for perfection every time.</p>
+            </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://image.qwenlm.ai/public_source/0a442ecd-f910-4dc8-97dd-75947f3a8b93/147cd8e37-657f-49a7-a20a-f31eda3e32ca.png" alt="Surface Preparation" class="w-full h-full object-cover">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <div class="relative mb-6">
+                        <div class="w-24 h-24 bg-gradient-to-br from-brand-blue to-brand-navy rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="text-4xl font-bold text-brand-gold">1</span>
+                        </div>
+                        <div class="absolute top-0 left-1/2 w-full h-full bg-brand-gold/20 rounded-full blur-xl -z-10"></div>
                     </div>
-                    <div class="p-6">
-                        <div class="w-12 h-12 bg-brand-blue text-white rounded-full flex items-center justify-center font-bold text-xl mb-4">1</div>
-                        <h3 class="text-xl font-bold mb-2">Surface Preparation</h3>
-                        <p class="text-slate-600">Diamond grinding and thorough cleaning to ensure perfect adhesion.</p>
-                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy mb-3">Surface Preparation</h3>
+                    <p class="text-slate-600">Diamond grinding and thorough cleaning to ensure perfect adhesion and longevity.</p>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1a9a3c749-1ce7-48df-962f-27f791e787cb.png" alt="Base Coat Application" class="w-full h-full object-cover">
+                
+                <div class="text-center group">
+                    <div class="relative mb-6">
+                        <div class="w-24 h-24 bg-gradient-to-br from-brand-blue to-brand-navy rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="text-4xl font-bold text-brand-gold">2</span>
+                        </div>
+                        <div class="absolute top-0 left-1/2 w-full h-full bg-brand-gold/20 rounded-full blur-xl -z-10"></div>
                     </div>
-                    <div class="p-6">
-                        <div class="w-12 h-12 bg-brand-blue text-white rounded-full flex items-center justify-center font-bold text-xl mb-4">2</div>
-                        <h3 class="text-xl font-bold mb-2">Base Coat Application</h3>
-                        <p class="text-slate-600">Premium polyaspartic base coat with decorative flakes broadcast.</p>
-                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy mb-3">Primer Application</h3>
+                    <p class="text-slate-600">High-performance primer ensures maximum bond strength between concrete and coating.</p>
                 </div>
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1b95ae65a-3fa0-41af-86da-7f4e0ab30bde.png" alt="Top Coat Finish" class="w-full h-full object-cover">
+                
+                <div class="text-center group">
+                    <div class="relative mb-6">
+                        <div class="w-24 h-24 bg-gradient-to-br from-brand-blue to-brand-navy rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="text-4xl font-bold text-brand-gold">3</span>
+                        </div>
+                        <div class="absolute top-0 left-1/2 w-full h-full bg-brand-gold/20 rounded-full blur-xl -z-10"></div>
                     </div>
-                    <div class="p-6">
-                        <div class="w-12 h-12 bg-brand-blue text-white rounded-full flex items-center justify-center font-bold text-xl mb-4">3</div>
-                        <h3 class="text-xl font-bold mb-2">Top Coat Finish</h3>
-                        <p class="text-slate-600">Clear polyaspartic top coat for maximum durability and gloss.</p>
+                    <h3 class="text-xl font-bold text-brand-navy mb-3">Base Coat & Flakes</h3>
+                    <p class="text-slate-600">Premium polyaspartic base coat with decorative flakes broadcast for texture and beauty.</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="relative mb-6">
+                        <div class="w-24 h-24 bg-gradient-to-br from-brand-blue to-brand-navy rounded-full flex items-center justify-center mx-auto shadow-lg group-hover:scale-110 transition-transform">
+                            <span class="text-4xl font-bold text-brand-gold">4</span>
+                        </div>
+                        <div class="absolute top-0 left-1/2 w-full h-full bg-brand-gold/20 rounded-full blur-xl -z-10"></div>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-navy mb-3">Top Coat Finish</h3>
+                    <p class="text-slate-600">Clear polyaspartic top coat with UV inhibitors for maximum durability and gloss retention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warranty Section -->
+    <section class="py-20 bg-gradient-to-br from-brand-navy to-brand-blue text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-brand-gold rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-brand-gold font-semibold tracking-wider uppercase text-sm mb-3 block">Our Guarantee</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">15-Year Warranty Included</h2>
+                    <div class="w-20 h-1 bg-brand-gold mb-8"></div>
+                    <p class="text-blue-100 text-lg mb-8 leading-relaxed">
+                        We're so confident in our materials and craftsmanship that we offer industry-leading 15-year warranty coverage. Our premium polyaspartic systems come with comprehensive protection against peeling, delamination, and UV yellowing.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-brand-gold/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-brand-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">15-Year Product Warranty</h4>
+                                <p class="text-blue-200">Comprehensive coverage on all materials</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-brand-gold/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-brand-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Workmanship Guarantee</h4>
+                                <p class="text-blue-200">3 years on installation quality</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-brand-gold/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-brand-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">UV Protection</h4>
+                                <p class="text-blue-200">Guaranteed against yellowing and fading</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center gap-2 bg-brand-gold hover:bg-brand-goldLight text-brand-navy font-bold py-4 px-8 rounded-full transition-all">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="relative">
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-brand-gold/20 rounded-full blur-2xl"></div>
+                    <img src="https://image.qwenlm.ai/public_source/e9187330-3f75-4efb-9d16-4c6730a0bc26/1b95ae65a-3fa0-41af-86da-7f4e0ab30bde.png" alt="Premium epoxy warranty" class="rounded-2xl shadow-2xl relative z-10">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl z-20">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 bg-brand-gold rounded-full flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-brand-navy text-3xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-bold text-brand-navy">15 Years</div>
+                                <div class="text-sm text-slate-600 font-medium">Warranty Included</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -416,14 +865,18 @@
     </section>
 
     <!-- Service Area Map Section -->
-    <section id="service-area" class="py-16 bg-white">
+    <section id="service-area" class="py-20 bg-slate-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Our Service Area</h2>
-            <p class="text-center text-slate-600 mb-12">Proudly serving Gold Coast and surrounding areas</p>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-3 block">Service Area</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">Proudly Serving Gold Coast</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-slate-600 text-lg">From the beaches to the hinterland, we cover all suburbs across the Gold Coast and surrounding areas.</p>
+            </div>
             
-            <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
                 <!-- Map -->
-                <div class="map-container h-[400px] md:h-[500px]">
+                <div class="map-container h-[500px]">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228644.8768294762!2d153.2971976487109!3d-28.01670299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b934a4c0c0c0c0d%3A0x502a6704c0c0c0c0!2sGold%20Coast%20QLD!5e0!3m2!1sen!2sau!4v1234567890" 
                         width="100%" 
@@ -435,205 +888,353 @@
                         class="grayscale hover:grayscale-0 transition duration-500">
                     </iframe>
                     <div class="map-overlay"></div>
+                    <div class="absolute bottom-6 left-6 bg-white rounded-xl p-4 shadow-xl">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-brand-blue rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-brand-navy">Gold Coast Coverage</p>
+                                <p class="text-sm text-slate-600">20+ Suburbs Served</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Service Area List -->
-                <div class="bg-brand-light p-8 rounded-xl shadow-lg">
-                    <h3 class="text-2xl font-bold text-brand-dark mb-6">
-                        <i class="fas fa-map-marker-alt text-brand-blue mr-2"></i>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+                    <h3 class="text-2xl font-bold text-brand-navy mb-6 flex items-center gap-3">
+                        <i class="fas fa-map text-brand-blue"></i>
                         Areas We Cover
                     </h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Surfers Paradise</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Broadbeach</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Southport</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Burleigh Heads</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Robina</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Varsity Lakes</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Coolangatta</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Palm Beach</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Mermaid Beach</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Nerang</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Pacific Pines</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-brand-gold"></i>
                             <span class="text-slate-700">Helensvale</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <span class="text-slate-700">Oxenford</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <span class="text-slate-700">Coomera</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <span class="text-slate-700">Mudgeeraba</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <span class="text-slate-700">Springbrook</span>
-                        </div>
                     </div>
-                    <div class="mt-8 p-4 bg-brand-blue text-white rounded-lg">
-                        <p class="font-bold"><i class="fas fa-truck mr-2"></i> Free On-Site Consultation</p>
-                        <p class="text-sm text-blue-100">We come to you for a free quote within our service area!</p>
+                    <div class="bg-gradient-to-br from-brand-blue to-brand-navy p-6 rounded-xl text-white">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-truck text-brand-gold text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Free On-Site Consultation</h4>
+                                <p class="text-blue-100 text-sm">We come to you for a free quote within our entire service area. No call-out fees for Gold Coast suburbs!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Prices -->
-    <section id="prices" class="py-16 bg-slate-50">
+    <!-- Pricing -->
+    <section id="prices" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Transparent Pricing</h2>
-            <p class="text-center text-slate-600 mb-12">No hidden fees. Quality guaranteed.</p>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-3 block">Transparent Pricing</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">Investment Guide</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-slate-600 text-lg">No hidden fees. Premium quality guaranteed. All quotes include comprehensive preparation.</p>
+            </div>
             
-            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-                <div class="grid md:grid-cols-2">
-                    <div class="p-8 border-b md:border-b-0 md:border-r border-slate-100">
-                        <h3 class="text-2xl font-bold text-brand-blue mb-2">Single Garage</h3>
-                        <p class="text-sm text-slate-500 mb-4">Standard Size (approx 20-24m²)</p>
-                        <div class="text-4xl font-extrabold text-slate-800 mb-6">$2,000</div>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center text-slate-600"><i class="fas fa-check text-green-500 mr-2"></i> Full Prep & Grind</li>
-                            <li class="flex items-center text-slate-600"><i class="fas fa-check text-green-500 mr-2"></i> Polyaspartic Top Coat</li>
-                            <li class="flex items-center text-slate-600"><i class="fas fa-check text-green-500 mr-2"></i> Water Proofing Included</li>
-                            <li class="flex items-center text-slate-600"><i class="fas fa-check text-green-500 mr-2"></i> Insect Proofing Included</li>
-                        </ul>
-                        <a href="#enquiry" class="block w-full text-center bg-slate-100 text-brand-dark font-bold py-3 rounded hover:bg-slate-200 transition">Select Plan</a>
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Single Garage -->
+                    <div class="premium-card bg-white rounded-2xl overflow-hidden shadow-xl border-2 border-slate-100">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-navy mb-2">Single Garage</h3>
+                            <p class="text-sm text-slate-500 mb-6">Standard Size (approx 20-24m²)</p>
+                            <div class="flex items-end gap-3 mb-8">
+                                <span class="text-5xl font-extrabold text-brand-blue">$2,000</span>
+                                <span class="text-xl text-slate-400 mb-2">AUD</span>
+                            </div>
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-center text-slate-600">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    Complete Surface Preparation
+                                </li>
+                                <li class="flex items-center text-slate-600">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    Diamond Grinding
+                                </li>
+                                <li class="flex items-center text-slate-600">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    Premium Polyaspartic Coating
+                                </li>
+                                <li class="flex items-center text-slate-600">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    <span class="font-bold text-brand-navy">FREE Waterproofing</span>
+                                </li>
+                                <li class="flex items-center text-slate-600">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    <span class="font-bold text-brand-navy">FREE Insect Proofing</span>
+                                </li>
+                                <li class="flex items-center text-slate-600">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    15-Year Product Warranty
+                                </li>
+                            </ul>
+                            <a href="#contact" class="block w-full text-center bg-slate-100 hover:bg-slate-200 text-brand-navy font-bold py-4 rounded-xl transition-all">Select This Plan</a>
+                        </div>
                     </div>
-                    <div class="p-8 bg-brand-dark text-white relative">
-                        <div class="absolute top-0 right-0 bg-brand-accent text-xs font-bold px-3 py-1 rounded-bl">POPULAR</div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Double Garage</h3>
-                        <p class="text-sm text-slate-400 mb-4">Standard Size (approx 40-50m²)</p>
-                        <div class="text-4xl font-extrabold text-white mb-6">$3,500</div>
-                        <ul class="space-y-3 mb-8 text-slate-300">
-                            <li class="flex items-center"><i class="fas fa-check text-brand-accent mr-2"></i> Full Prep & Grind</li>
-                            <li class="flex items-center"><i class="fas fa-check text-brand-accent mr-2"></i> Polyaspartic Top Coat</li>
-                            <li class="flex items-center"><i class="fas fa-check text-brand-accent mr-2"></i> Water Proofing Included</li>
-                            <li class="flex items-center"><i class="fas fa-check text-brand-accent mr-2"></i> Insect Proofing Included</li>
-                        </ul>
-                        <a href="#enquiry" class="block w-full text-center bg-brand-accent text-white font-bold py-3 rounded hover:bg-yellow-600 transition">Select Plan</a>
+                    
+                    <!-- Double Garage -->
+                    <div class="premium-card bg-gradient-to-br from-brand-navy to-brand-blue rounded-2xl overflow-hidden shadow-xl text-white relative">
+                        <div class="absolute top-0 right-0 bg-brand-gold text-brand-navy text-xs font-bold px-4 py-2 rounded-bl-xl">MOST POPULAR</div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-white mb-2">Double Garage</h3>
+                            <p class="text-sm text-blue-200 mb-6">Standard Size (approx 40-50m²)</p>
+                            <div class="flex items-end gap-3 mb-8">
+                                <span class="text-5xl font-extrabold text-brand-gold">$3,500</span>
+                                <span class="text-xl text-blue-200 mb-2">AUD</span>
+                            </div>
+                            <ul class="space-y-4 mb-8 text-blue-100">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    Complete Surface Preparation
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    Diamond Grinding
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    Premium Polyaspartic Coating
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    <span class="font-bold text-white">FREE Waterproofing</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    <span class="font-bold text-white">FREE Insect Proofing</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-brand-gold mr-3"></i>
+                                    15-Year Product Warranty
+                                </li>
+                            </ul>
+                            <a href="#contact" class="block w-full text-center bg-brand-gold hover:bg-brand-goldLight text-brand-navy font-bold py-4 rounded-xl transition-all">Select This Plan</a>
+                        </div>
                     </div>
                 </div>
+                
+                <div class="text-center mt-12 bg-slate-50 p-6 rounded-xl">
+                    <p class="text-slate-600">
+                        <i class="fas fa-info-circle text-brand-blue mr-2"></i>
+                        Prices are estimates based on standard concrete conditions in good repair. Final quote provided after free on-site inspection.
+                    </p>
+                </div>
             </div>
-            <p class="text-center text-sm text-slate-500 mt-6">*Prices are estimates based on standard concrete conditions. Final quote provided after inspection.</p>
         </div>
     </section>
 
     <!-- Reviews -->
-    <section id="reviews" class="py-16 bg-white">
+    <section id="reviews" class="py-20 bg-slate-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-12">What Locals Say</h2>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-3 block">Testimonials</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">What Locals Say</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-slate-600 text-lg">Don't just take our word for it. Hear from hundreds of satisfied Gold Coast homeowners.</p>
+            </div>
+            
+            <!-- Google Rating Badge -->
+            <div class="flex justify-center mb-12">
+                <div class="bg-white rounded-2xl p-6 shadow-xl border border-slate-100 inline-flex items-center gap-6">
+                    <div class="bg-gradient-to-br from-blue-500 to-green-500 p-4 rounded-xl">
+                        <i class="fab fa-google text-white text-3xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="flex items-center gap-1 mb-2">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                        <p class="font-bold text-brand-navy text-xl">4.9/5 Google Rating</p>
+                        <p class="text-sm text-slate-600">Based on 200+ Gold Coast Reviews</p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Review 1 -->
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                <div class="premium-card bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
                     <div class="flex text-yellow-400 mb-4">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-slate-600 mb-4 italic">"Absolutely blown away by the finish. The team arrived on time, finished in 2 days as promised, and the floor looks like glass. Best investment for our home in Burleigh."</p>
-                    <div class="font-bold text-slate-900">- Sarah Jenkins, Burleigh Heads</div>
+                    <p class="text-slate-600 mb-6 italic leading-relaxed">"Absolutely blown away by the finish. The team arrived on time, finished in 2 days as promised, and the floor looks like glass. Best investment for our home in Burleigh. Highly recommend!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-brand-blue to-brand-navy rounded-full flex items-center justify-center text-white font-bold">SJ</div>
+                        <div>
+                            <div class="font-bold text-brand-navy">Sarah Jenkins</div>
+                            <div class="text-sm text-slate-500">Burleigh Heads</div>
+                        </div>
+                    </div>
                 </div>
+                
                 <!-- Review 2 -->
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                <div class="premium-card bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
                     <div class="flex text-yellow-400 mb-4">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-slate-600 mb-4 italic">"Great communication from start to finish. The $2000 deal was genuine, no hidden costs. Highly recommend Ecoshield for anyone on the Gold Coast."</p>
-                    <div class="font-bold text-slate-900">- Mike Thompson, Robina</div>
+                    <p class="text-slate-600 mb-6 italic leading-relaxed">"Great communication from start to finish. The $2000 deal was genuine, no hidden costs. The waterproofing and insect proofing included was a great bonus. Highly recommend Ecoshield!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-brand-blue to-brand-navy rounded-full flex items-center justify-center text-white font-bold">MT</div>
+                        <div>
+                            <div class="font-bold text-brand-navy">Mike Thompson</div>
+                            <div class="text-sm text-slate-500">Robina</div>
+                        </div>
+                    </div>
                 </div>
+                
                 <!-- Review 3 -->
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                <div class="premium-card bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
                     <div class="flex text-yellow-400 mb-4">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <p class="text-slate-600 mb-4 italic">"Professional, clean, and fast. They even helped move some boxes out of the way. The insect proofing gives me peace of mind. 10/10 service."</p>
-                    <div class="font-bold text-slate-900">- David Chen, Southport</div>
+                    <p class="text-slate-600 mb-6 italic leading-relaxed">"Professional, clean, and fast. They even helped move some boxes out of the way. The insect proofing gives me peace of mind. The floor is stunning and easy to clean. 10/10 service!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-brand-blue to-brand-navy rounded-full flex items-center justify-center text-white font-bold">DC</div>
+                        <div>
+                            <div class="font-bold text-brand-navy">David Chen</div>
+                            <div class="text-sm text-slate-500">Southport</div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center gap-2 text-brand-blue font-semibold hover:gap-3 transition-all">
+                    Read More Reviews on Google <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-16 bg-slate-50">
-        <div class="container mx-auto px-4 max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-12">Frequently Asked Questions</h2>
+    <section id="faq" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-3 block">FAQ</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">Common Questions</h2>
+                <div class="section-divider mb-6"></div>
+                <p class="text-slate-600 text-lg">Everything you need to know about our premium epoxy flooring services.</p>
+            </div>
             
             <div class="space-y-4">
                 <!-- FAQ Item 1 -->
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                    <button class="w-full px-6 py-4 text-left font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                        How long does the installation take?
-                        <i class="fas fa-chevron-down transition-transform"></i>
+                <div class="bg-slate-50 rounded-xl overflow-hidden border border-slate-100">
+                    <button class="w-full px-8 py-6 text-left font-bold text-brand-navy flex justify-between items-center focus:outline-none hover:bg-slate-100 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg">How long does the installation take?</span>
+                        <i class="fas fa-chevron-down text-brand-blue transition-transform"></i>
                     </button>
-                    <div class="accordion-content px-6 bg-slate-50">
-                        <p class="py-4 text-slate-600">Most single and double garages are completed within 2 days. Day 1 is preparation and base coat, Day 2 is the top coat. You can usually drive on it within 24 hours.</p>
+                    <div class="accordion-content px-8">
+                        <p class="py-6 text-slate-600 leading-relaxed">Most single and double garages are completed within 2 days. Day 1 involves surface preparation and base coat application, Day 2 is the top coat. You can typically walk on it within 12 hours and drive on it within 24-48 hours, depending on weather conditions.</p>
                     </div>
                 </div>
+                
                 <!-- FAQ Item 2 -->
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                    <button class="w-full px-6 py-4 text-left font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                        What is Polyaspartic coating?
-                        <i class="fas fa-chevron-down transition-transform"></i>
+                <div class="bg-slate-50 rounded-xl overflow-hidden border border-slate-100">
+                    <button class="w-full px-8 py-6 text-left font-bold text-brand-navy flex justify-between items-center focus:outline-none hover:bg-slate-100 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg">What is Polyaspartic coating?</span>
+                        <i class="fas fa-chevron-down text-brand-blue transition-transform"></i>
                     </button>
-                    <div class="accordion-content px-6 bg-slate-50">
-                        <p class="py-4 text-slate-600">Polyaspartic is a superior technology to traditional epoxy. It cures much faster, is more flexible (won't crack), and is highly resistant to UV yellowing, making it perfect for the Gold Coast sun.</p>
+                    <div class="accordion-content px-8">
+                        <p class="py-6 text-slate-600 leading-relaxed">Polyaspartic is a superior technology to traditional epoxy. It cures much faster (allowing 2-day completion), is more flexible (won't crack with concrete movement), and is highly resistant to UV yellowing, making it perfect for the Gold Coast's harsh sun. It's also more chemical and heat resistant.</p>
                     </div>
                 </div>
+                
                 <!-- FAQ Item 3 -->
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                    <button class="w-full px-6 py-4 text-left font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                        Do you offer a warranty?
-                        <i class="fas fa-chevron-down transition-transform"></i>
+                <div class="bg-slate-50 rounded-xl overflow-hidden border border-slate-100">
+                    <button class="w-full px-8 py-6 text-left font-bold text-brand-navy flex justify-between items-center focus:outline-none hover:bg-slate-100 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg">Do you offer a warranty?</span>
+                        <i class="fas fa-chevron-down text-brand-blue transition-transform"></i>
                     </button>
-                    <div class="accordion-content px-6 bg-slate-50">
-                        <p class="py-4 text-slate-600">Yes, all our residential installations come with a 3-year warranty against peeling and delamination when installed on sound concrete.</p>
+                    <div class="accordion-content px-8">
+                        <p class="py-6 text-slate-600 leading-relaxed">Yes! All our residential installations come with a 15-year product warranty against peeling and delamination when installed on sound concrete. Our workmanship is guaranteed for 3 years.</p>
                     </div>
                 </div>
+                
                 <!-- FAQ Item 4 -->
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                    <button class="w-full px-6 py-4 text-left font-bold text-slate-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                        Is the floor slippery when wet?
-                        <i class="fas fa-chevron-down transition-transform"></i>
+                <div class="bg-slate-50 rounded-xl overflow-hidden border border-slate-100">
+                    <button class="w-full px-8 py-6 text-left font-bold text-brand-navy flex justify-between items-center focus:outline-none hover:bg-slate-100 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg">Is the floor slippery when wet?</span>
+                        <i class="fas fa-chevron-down text-brand-blue transition-transform"></i>
                     </button>
-                    <div class="accordion-content px-6 bg-slate-50">
-                        <p class="py-4 text-slate-600">We add anti-slip additives to the top coat to ensure the floor remains safe even when wet, making it suitable for driveways and pool surrounds as well.</p>
+                    <div class="accordion-content px-8">
+                        <p class="py-6 text-slate-600 leading-relaxed">We add anti-slip additives to the top coat as standard to ensure the floor remains safe even when wet. This makes it suitable for driveways, pool surrounds, and areas prone to moisture. We can adjust the slip resistance based on your specific needs.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="bg-slate-50 rounded-xl overflow-hidden border border-slate-100">
+                    <button class="w-full px-8 py-6 text-left font-bold text-brand-navy flex justify-between items-center focus:outline-none hover:bg-slate-100 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg">What preparation is included?</span>
+                        <i class="fas fa-chevron-down text-brand-blue transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-8">
+                        <p class="py-6 text-slate-600 leading-relaxed">Our preparation is comprehensive and includes diamond grinding to open the concrete pores, thorough cleaning, crack repair (where possible), and moisture testing. Proper preparation is 80% of a successful installation, which is why we never cut corners here.</p>
                     </div>
                 </div>
             </div>
@@ -641,70 +1242,104 @@
     </section>
 
     <!-- Contact & Enquiry -->
-    <section id="enquiry" class="py-16 bg-brand-dark text-white relative overflow-hidden">
-        <!-- Background decorative element -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue opacity-20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+    <section id="contact" class="py-20 bg-gradient-to-br from-brand-navy to-brand-blue text-white relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-gold opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-blue opacity-20 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
 
         <div class="container mx-auto px-4 relative z-10">
-            <div class="grid md:grid-cols-2 gap-12">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold font-semibold tracking-wider uppercase text-sm mb-3 block">Get In Touch</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">Start Your Transformation</h2>
+                <div class="w-20 h-1 bg-brand-gold mx-auto mb-6"></div>
+                <p class="text-blue-100 text-lg">Ready to transform your space? Fill out the form or call us directly. We respond within 2 hours during business hours.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Get Your Free Quote Today</h2>
-                    <p class="text-slate-300 mb-8 text-lg">Ready to transform your space? Fill out the form or call us directly. We respond within 2 hours during business hours.</p>
+                    <h3 class="text-2xl font-bold mb-8">Contact Information</h3>
                     
-                    <div class="space-y-6">
+                    <div class="space-y-6 mb-10">
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-brand-blue rounded flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-phone-alt"></i>
+                            <div class="w-14 h-14 bg-brand-gold/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone-alt text-brand-gold text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Phone</h4>
-                                <div class="flex flex-col text-slate-300">
-                                    <a href="tel:0416013145" class="hover:text-white transition">0416 013 145</a>
-                                    <a href="tel:0452664120" class="hover:text-white transition">0452 664 120</a>
+                                <h4 class="font-bold text-lg mb-1">Phone</h4>
+                                <div class="flex flex-col text-blue-100">
+                                    <a href="tel:0416013145" class="hover:text-brand-gold transition text-lg">0416 013 145</a>
+                                    <a href="tel:0452664120" class="hover:text-brand-gold transition text-lg">0452 664 120</a>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-brand-blue rounded flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-envelope"></i>
+                            <div class="w-14 h-14 bg-brand-gold/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-brand-gold text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Email</h4>
-                                <a href="mailto:ecoshieldservices.au@gmail.com" class="text-slate-300 hover:text-white transition break-all">ecoshieldservices.au@gmail.com</a>
+                                <h4 class="font-bold text-lg mb-1">Email</h4>
+                                <a href="mailto:ecoshieldservices.au@gmail.com" class="text-blue-100 hover:text-brand-gold transition break-all">ecoshieldservices.au@gmail.com</a>
                             </div>
                         </div>
+                        
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-brand-blue rounded flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-marker-alt"></i>
+                            <div class="w-14 h-14 bg-brand-gold/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-brand-gold text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg">Service Area</h4>
-                                <p class="text-slate-300">Gold Coast, Queensland & Surrounds</p>
+                                <h4 class="font-bold text-lg mb-1">Service Area</h4>
+                                <p class="text-blue-100">Gold Coast, Queensland & Surrounds</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-14 h-14 bg-brand-gold/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-clock text-brand-gold text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Business Hours</h4>
+                                <p class="text-blue-100">Monday - Saturday: 7:00 AM - 6:00 PM</p>
+                                <p class="text-blue-100">Sunday: By Appointment</p>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                        <h4 class="font-bold text-lg mb-4 flex items-center gap-2">
+                            <i class="fas fa-gift text-brand-gold"></i>
+                            Free Consultation Includes:
+                        </h4>
+                        <ul class="space-y-2 text-blue-100">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-gold"></i> On-site measurement</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-gold"></i> Concrete condition assessment</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-gold"></i> Color and finish consultation</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-brand-gold"></i> Detailed written quote</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bg-white text-slate-800 rounded-xl p-8 shadow-2xl">
+                <div class="bg-white text-slate-800 rounded-2xl p-8 shadow-2xl">
+                    <h3 class="text-2xl font-bold text-brand-navy mb-6">Request Your Free Quote</h3>
                     <form onsubmit="event.preventDefault(); alert('Thank you! Your enquiry has been sent. We will contact you within 2 hours.');">
                         <div class="grid md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <label class="block text-sm font-bold mb-2">Name</label>
-                                <input type="text" class="w-full bg-slate-50 border border-slate-300 rounded p-3 focus:outline-none focus:border-brand-blue" required placeholder="John Doe">
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Full Name *</label>
+                                <input type="text" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition" required placeholder="John Smith">
                             </div>
                             <div>
-                                <label class="block text-sm font-bold mb-2">Phone</label>
-                                <input type="tel" class="w-full bg-slate-50 border border-slate-300 rounded p-3 focus:outline-none focus:border-brand-blue" required placeholder="0400 000 000">
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Phone Number *</label>
+                                <input type="tel" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition" required placeholder="0400 000 000">
                             </div>
                         </div>
                         <div class="mb-4">
-                            <label class="block text-sm font-bold mb-2">Email</label>
-                            <input type="email" class="w-full bg-slate-50 border border-slate-300 rounded p-3 focus:outline-none focus:border-brand-blue" required placeholder="john@example.com">
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Email Address *</label>
+                            <input type="email" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition" required placeholder="john@example.com">
                         </div>
                         <div class="mb-4">
-                            <label class="block text-sm font-bold mb-2">Service Interested In</label>
-                            <select class="w-full bg-slate-50 border border-slate-300 rounded p-3 focus:outline-none focus:border-brand-blue">
-                                <option>Single Garage ($2000 Special)</option>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Service Interested In *</label>
+                            <select class="w-full bg-slate-50 border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition">
+                                <option>Single Garage - $2,000 Special</option>
                                 <option>Double Garage</option>
                                 <option>Driveway</option>
                                 <option>Commercial/Workshop</option>
@@ -712,12 +1347,15 @@
                             </select>
                         </div>
                         <div class="mb-6">
-                            <label class="block text-sm font-bold mb-2">Message / Details</label>
-                            <textarea class="w-full bg-slate-50 border border-slate-300 rounded p-3 focus:outline-none focus:border-brand-blue h-32" placeholder="Tell us about your project..."></textarea>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Message / Project Details</label>
+                            <textarea class="w-full bg-slate-50 border border-slate-300 rounded-lg p-4 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition h-32 resize-none" placeholder="Tell us about your project, approximate size, and any specific requirements..."></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-brand-blue text-white font-bold py-4 rounded hover:bg-blue-700 transition shadow-lg">
+                        <button type="submit" class="w-full bg-gradient-to-r from-brand-blue to-brand-navy text-white font-bold py-4 rounded-lg hover:shadow-lg hover:shadow-brand-blue/30 transition-all transform hover:-translate-y-0.5">
                             Submit Enquiry
                         </button>
+                        <p class="text-xs text-slate-500 text-center mt-4">
+                            <i class="fas fa-lock mr-1"></i> Your information is secure and never shared
+                        </p>
                     </form>
                 </div>
             </div>
@@ -725,31 +1363,89 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex justify-center items-center gap-2 mb-4">
-                <i class="fas fa-shield-alt text-brand-blue text-2xl"></i>
-                <span class="text-white font-bold text-lg">ECOSHIELD EPOXY SERVICE</span>
+    <footer class="bg-brand-charcoal text-slate-400 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-3 text-white mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-brand-blue to-brand-navy rounded-xl flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-brand-gold text-xl"></i>
+                        </div>
+                        <div>
+                            <span class="text-xl font-bold text-white">ECOSHIELD</span>
+                            <div class="text-xs text-slate-500 font-medium tracking-widest uppercase">Premium Epoxy Solutions</div>
+                        </div>
+                    </div>
+                    <p class="text-sm leading-relaxed max-w-sm mb-4">
+                        Gold Coast's premier epoxy flooring specialists. 10+ years of excellence with 500+ completed projects. Australian owned, fully licensed, and committed to delivering premium results.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-brand-blue rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-brand-blue rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-brand-blue rounded-lg flex items-center justify-center transition">
+                            <i class="fab fa-google"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="hover:text-brand-gold transition">About Us</a></li>
+                        <li><a href="#services" class="hover:text-brand-gold transition">Services</a></li>
+                        <li><a href="#gallery" class="hover:text-brand-gold transition">Gallery</a></li>
+                        <li><a href="#process" class="hover:text-brand-gold transition">Our Process</a></li>
+                        <li><a href="#prices" class="hover:text-brand-gold transition">Pricing</a></li>
+                        <li><a href="#reviews" class="hover:text-brand-gold transition">Reviews</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone text-brand-gold"></i> 0416 013 145
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone text-brand-gold"></i> 0452 664 120
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-envelope text-brand-gold"></i> ecoshieldservices.au@gmail.com
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt text-brand-gold"></i> Gold Coast, QLD
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-clock text-brand-gold"></i> Mon-Sat: 7AM - 6PM
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <p class="mb-4 text-sm">© 2023 Ecoshield Epoxy Service. All rights reserved.</p>
-            <div class="flex justify-center gap-4 text-sm">
-                <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition">Terms of Service</a>
+            <div class="border-t border-slate-800 pt-8 text-center text-sm">
+                <p>&copy; 2024 Ecoshield Premium Epoxy Service. All rights reserved.</p>
+                <p class="mt-2 text-slate-500">ABN: XX XXX XXX XXX | Fully Licensed & Insured</p>
+                <div class="flex justify-center gap-4 mt-4">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition">Warranty Information</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- Floating Call Button -->
     <a href="tel:0416013145" class="floating-call-btn group">
-        <div class="call-tooltip bg-white rounded-lg shadow-xl p-4 border-l-4 border-brand-blue">
-            <p class="font-bold text-slate-800"><i class="fas fa-gift text-brand-accent mr-2"></i>Free Quote & Consultation</p>
-            <p class="text-sm text-slate-600">Call us now!</p>
-            <p class="text-lg font-bold text-brand-blue mt-1">0416 013 145</p>
+        <div class="call-tooltip bg-white rounded-xl shadow-2xl p-5 border-l-4 border-brand-gold">
+            <p class="font-bold text-slate-800"><i class="fas fa-gift text-brand-gold mr-2"></i>Free Quote & Consultation</p>
+            <p class="text-sm text-slate-600">Call us now for instant pricing!</p>
+            <p class="text-xl font-bold text-brand-blue mt-2">0416 013 145</p>
         </div>
-        <div class="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-2xl hover:shadow-green-500/50 transition-all duration-300">
-            <i class="fas fa-phone-alt text-white text-2xl md:text-3xl"></i>
+        <div class="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-brand-gold to-brand-goldLight rounded-full flex items-center justify-center shadow-2xl hover:shadow-brand-gold/50 transition-all duration-300">
+            <i class="fas fa-phone-alt text-brand-navy text-2xl md:text-3xl"></i>
         </div>
-        <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center animate-bounce-slow">
+        <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center animate-bounce">
             <i class="fas fa-comment-dots text-white text-xs"></i>
         </div>
     </a>
@@ -779,11 +1475,13 @@
             icon.classList.toggle('rotate-180');
         }
 
-        // Show floating button on scroll
+        // Header scroll effect
         window.addEventListener('scroll', function() {
-            const floatingBtn = document.querySelector('.floating-call-btn');
-            if (window.scrollY > 300) {
-                floatingBtn.classList.add('opacity-100');
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-xl');
+            } else {
+                header.classList.remove('shadow-xl');
             }
         });
     </script>
